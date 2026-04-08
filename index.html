@@ -169,7 +169,6 @@
       <h1 class="hero-name" id="hero-name">Your <span>Dhaval Mehta</span></h1>
       <p class="hero-subtitle" id="hero-subtitle">I help businesses grow by turning strong conversations into lasting customer relationships and measurable results.</p>
       <div class="hero-ctas">
-        <button class="btn-primary" onclick="openEdit('hero')">Edit This Section</button>
         <button class="btn-outline" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Get in Touch</button>
       </div>
     </div>
@@ -189,7 +188,6 @@
         </div>
       </div>
       <div style="text-align:center;margin-top:1.5rem">
-        <button class="btn-outline" onclick="openEdit('stats')" style="font-size:0.75rem;padding:8px 20px">Edit Stats</button>
       </div>
     </div>
   </div>
@@ -219,7 +217,6 @@
         <p id="about-para1">Hi, I’m Dhaval — a B2B sales leader, customer success professional, and former founder focused on building growth through trust, clarity, and long-term value.</p>
         <p id="about-para2">I’ve spent the last 8+ years working across strategic sales, account management, and customer-facing roles, helping businesses grow through consultative selling and stronger client relationships. My approach is simple: understand the real need, communicate clearly, and create outcomes that make sense for both the business and the customer.</p>
         <p id="about-para3">That mix of sales, customer success, and entrepreneurial experience has shaped how I work today — commercially focused, relationship-driven, and always thinking beyond the immediate close.</p>
-        <button class="btn-outline" onclick="openEdit('about')" style="margin-top:1rem;font-size:0.8rem;padding:8px 18px">Edit About</button>
         <div class="about-highlights">
           <div class="highlight-item">
             <div class="highlight-icon">🎯</div>
@@ -276,7 +273,6 @@
       </ul>
     </div>
   </div>
-  <button class="btn-outline" onclick="openEdit('experience')" style="margin-top:1rem;font-size:0.8rem;padding:8px 18px">Edit Experience</button>
 </section>
 
 <!-- SKILLS -->
@@ -325,8 +321,7 @@
         </div>
       </div>
     </div>
-    <button class="btn-outline" onclick="openEdit('skills')" style="margin-top:2rem;font-size:0.8rem;padding:8px 18px">Edit Skills</button>
-  </div>
+   </div>
 </div>
 
 <!-- BLOG -->
@@ -413,7 +408,6 @@
             <div class="contact-item-text"><strong>LinkedIn</strong><a id="contact-linkedin" href="#">www.linkedin.com/in/dhavalmehta90</a></div>
           </div>
         </div>
-        <button class="btn-outline" onclick="openEdit('contact')" style="margin-top:2rem;font-size:0.8rem;padding:8px 18px">Edit Contact Info</button>
       </div>
       <div>
         <div class="contact-form">
@@ -434,153 +428,5 @@
 
 </div>
 
-<!-- MODAL -->
-<div id="modal" style="display:none" class="modal-backdrop" onclick="closeModal(event)">
-  <div class="modal" id="modal-content">
-    <button class="modal-close" onclick="closeModalDirect()">×</button>
-    <h2 id="modal-title">Edit Section</h2>
-    <div id="modal-body"></div>
-    <div class="modal-actions">
-      <button class="btn-primary" id="modal-save">Save Changes</button>
-      <button class="btn-outline" onclick="closeModalDirect()">Cancel</button>
-    </div>
-  </div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
-
-<script>
-function toggleTheme() {
-  const body = document.body;
-  const isDark = body.getAttribute('data-theme') === 'dark';
-  body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  document.getElementById('theme-btn').textContent = isDark ? '☾ Dark' : '☀ Light';
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-function closeModal(e) {
-  if (e.target === document.getElementById('modal')) closeModalDirect();
-}
-function closeModalDirect() {
-  document.getElementById('modal').style.display = 'none';
-}
-
-function fi(id) { return document.getElementById(id); }
-
-function openEdit(section) {
-  const modal = fi('modal');
-  const body = fi('modal-body');
-  const saveBtn = fi('modal-save');
-  modal.style.display = 'flex';
-
-  const inp = (id, val, placeholder) => `<div class="form-group" style="margin-bottom:1rem"><label style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3)">${id.replace(/-/g,' ')}</label><input id="${id}" value="${val||''}" placeholder="${placeholder||''}" style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 14px;font-size:0.9rem;color:var(--text);outline:none;font-family:'Lato',sans-serif"/></div>`;
-  const ta = (id, val, placeholder) => `<div class="form-group" style="margin-bottom:1rem"><label style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3)">${id.replace(/-/g,' ')}</label><textarea id="${id}" placeholder="${placeholder||''}" style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 14px;font-size:0.9rem;color:var(--text);outline:none;min-height:80px;resize:vertical;font-family:'Lato',sans-serif">${val||''}</textarea></div>`;
-
-  if (section === 'hero') {
-    fi('modal-title').textContent = 'Edit Hero Section';
-    body.innerHTML = inp('full-name', fi('hero-name').innerText, 'Dhaval') + inp('title-tag', fi('hero-tag').textContent, 'e.g. Sales Professional') + ta('subtitle', fi('hero-subtitle').textContent, 'Your headline description');
-    saveBtn.onclick = () => {
-      const name = fi('full-name').value;
-      const parts = name.split(' ');
-      fi('hero-name').innerHTML = `${parts[0]} <span>${parts.slice(1).join(' ')}</span>`;
-      fi('nav-logo').textContent = name;
-      fi('footer-name').textContent = name;
-      fi('hero-tag').textContent = fi('title-tag').value;
-      fi('hero-subtitle').textContent = fi('subtitle').value;
-      closeModalDirect(); showToast('Hero updated!');
-    };
-  }
-
-  else if (section === 'stats') {
-    fi('modal-title').textContent = 'Edit Stats';
-    body.innerHTML = [1,2,3].map(i => `<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">${inp('s'+i+'n', fi('stat'+i+'-num').textContent, 'e.g. $5M+')}${inp('s'+i+'l', fi('stat'+i+'-label').textContent, 'Label')}</div>`).join('');
-    saveBtn.onclick = () => {
-      [1,2,3].forEach(i => { fi('stat'+i+'-num').textContent = fi('s'+i+'n').value; fi('stat'+i+'-label').textContent = fi('s'+i+'l').value; });
-      closeModalDirect(); showToast('Stats updated!');
-    };
-  }
-
-  else if (section === 'about') {
-    fi('modal-title').textContent = 'Edit About Me';
-    body.innerHTML = [1,2,3].map(i => ta('p'+i, fi('about-para'+i).textContent, 'Paragraph ' + i)).join('');
-    saveBtn.onclick = () => {
-      [1,2,3].forEach(i => fi('about-para'+i).textContent = fi('p'+i).value);
-      closeModalDirect(); showToast('About updated!');
-    };
-  }
-
-  else if (section === 'experience') {
-    fi('modal-title').textContent = 'Add New Role';
-    body.innerHTML = `<p style="font-size:0.85rem;color:var(--text3);margin-bottom:1.5rem">This will prepend a new role at the top of your timeline.</p>` + inp('exp-period','','e.g. 2024 — Present') + inp('exp-role','','e.g. Senior Account Executive') + inp('exp-company','','e.g. Acme Corp · Chennai') + ta('exp-ach','','One achievement per line');
-    saveBtn.onclick = () => {
-      const role = fi('exp-role').value; if (!role) { showToast('Role title is required'); return; }
-      const bullets = fi('exp-ach').value.split('\n').filter(l=>l.trim()).map(l=>`<li>${l}</li>`).join('');
-      fi('timeline-list').insertAdjacentHTML('afterbegin', `<div class="timeline-item"><div class="timeline-period">${fi('exp-period').value}</div><div class="timeline-role">${role}</div><div class="timeline-company">${fi('exp-company').value}</div><ul class="timeline-achievements">${bullets}</ul></div>`);
-      closeModalDirect(); showToast('Role added!');
-    };
-  }
-
-  else if (section === 'skills') {
-    fi('modal-title').textContent = 'Add Skill';
-    body.innerHTML = `<div class="form-group" style="margin-bottom:1rem"><label style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3)">Category</label><select id="sk-cat" style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 14px;font-size:0.9rem;color:var(--text);outline:none;font-family:'Lato',sans-serif"><option>Sales Skills</option><option>CRM &amp; Tools</option><option>Domains</option><option>Soft Skills</option></select></div>` + inp('sk-name','','e.g. Challenger Sale');
-    saveBtn.onclick = () => {
-      const cat = fi('sk-cat').value; const name = fi('sk-name').value; if (!name) return;
-      document.querySelectorAll('.skill-category').forEach(c => { if (c.querySelector('.skill-cat-title').textContent === cat) c.querySelector('.skill-tags').insertAdjacentHTML('beforeend', `<span class="skill-tag">${name}</span>`); });
-      closeModalDirect(); showToast('Skill added!');
-    };
-  }
-
-  else if (section === 'contact') {
-    fi('modal-title').textContent = 'Edit Contact Info';
-    body.innerHTML = inp('c-email', fi('contact-email').textContent, 'you@email.com') + inp('c-loc', fi('contact-location').textContent, 'City, Country') + inp('c-li', fi('contact-linkedin').textContent, 'linkedin.com/in/...');
-    saveBtn.onclick = () => {
-      fi('contact-email').textContent = fi('c-email').value;
-      fi('contact-location').textContent = fi('c-loc').value;
-      fi('contact-linkedin').textContent = fi('c-li').value;
-      closeModalDirect(); showToast('Contact updated!');
-    };
-  }
-}
-
-function openUpload(type) {
-  const modal = fi('modal');
-  const body = fi('modal-body');
-  const saveBtn = fi('modal-save');
-  const isBlog = type === 'blog';
-  fi('modal-title').textContent = isBlog ? 'Add Blog Post' : 'Add Case Study';
-  modal.style.display = 'flex';
-  const inp = (id, label, ph) => `<div class="form-group" style="margin-bottom:1rem"><label style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3)">${label}</label><input id="${id}" placeholder="${ph||''}" style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 14px;font-size:0.9rem;color:var(--text);outline:none;font-family:'Lato',sans-serif"/></div>`;
-  const ta = (id, label, ph) => `<div class="form-group" style="margin-bottom:1rem"><label style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3)">${label}</label><textarea id="${id}" placeholder="${ph||''}" style="width:100%;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 14px;font-size:0.9rem;color:var(--text);outline:none;min-height:80px;resize:vertical;font-family:'Lato',sans-serif"></textarea></div>`;
-  body.innerHTML = inp('pt','Title','Enter title') + inp('ptag','Tag / Category', isBlog ? 'e.g. Sales Strategy' : 'e.g. Enterprise Deal') + ta('pex','Excerpt / Summary','Short description...') + inp('pmeta', isBlog ? 'Date & Read Time' : 'Quarter / Label', isBlog ? 'April 2025 · 5 min read' : 'Q1 2025');
-  saveBtn.onclick = () => {
-    const title = fi('pt').value; if (!title) { showToast('Title is required'); return; }
-    const tag = fi('ptag').value; const excerpt = fi('pex').value; const meta = fi('pmeta').value;
-    const parts = isBlog ? meta.split('·') : [meta, 'Case Study'];
-    const card = `<div class="post-card"><div class="post-thumb">${isBlog?'✍️':'📋'}</div><div class="post-body"><span class="post-tag">${tag}</span><div class="post-title">${title}</div><div class="post-excerpt">${excerpt}</div><div class="post-meta"><span>${(parts[0]||'').trim()}</span><span>${(parts[1]||'').trim()}</span></div></div></div>`;
-    const grid = fi(isBlog ? 'blog-grid' : 'cases-grid');
-    grid.lastElementChild.insertAdjacentHTML('beforebegin', card);
-    closeModalDirect(); showToast((isBlog ? 'Blog post' : 'Case study') + ' added!');
-  };
-}
-
-function handlePhoto(event) {
-  const file = event.target.files[0]; if (!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    fi('img-placeholder').style.display = 'none';
-    const img = fi('profile-photo');
-    img.src = e.target.result;
-    img.style.display = 'block';
-  };
-  reader.readAsDataURL(file);
-}
-</script>
 </body>
 </html>
