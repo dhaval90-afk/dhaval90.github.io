@@ -153,7 +153,7 @@
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#blog">Blog</a>
-      <a href="#case studies">Case Studies</a>
+      <a href="#casestudies">Case Studies</a>
       <a href="#contact">Contact</a>
       <button class="theme-btn" onclick="toggleTheme()" id="theme-btn">☾ Dark</button>
     </div>
@@ -207,9 +207,9 @@
       <div class="about-content">
         <div class="section-title" style="font-size:2rem;margin-bottom:1rem">About Me</div>
         <div class="divider"></div>
-        <p id="about-para1">Hi, I’m Dhaval — a B2B sales leader, customer success professional, and former founder focused on building growth through trust, clarity, and long-term value.</p>
-        <p id="about-para2">I’ve spent the last 8+ years working across strategic sales, account management, and customer-facing roles, helping businesses grow through consultative selling and stronger client relationships. My approach is simple: understand the real need, communicate clearly, and create outcomes that make sense for both the business and the customer.</p>
-        <p id="about-para3">That mix of sales, customer success, and entrepreneurial experience has shaped how I work today — commercially focused, relationship-driven, and always thinking beyond the immediate close.</p>
+        <p id="about-para1">Hi, I’m Dhaval - a B2B sales leader, customer success professional, and former founder focused on building growth through trust, clarity, and long-term value. Over the past 8+ years I've worn many hats — individual contributor, team lead and player-coach — with a strong focus on B2B SaaS sales and select B2C experience across India and North American markets. That breadth hasn't just given me range; it's given me perspective on what truly drives a buying decision regardless of the industry or geography.</p>
+        <p id="about-para2">What I'm most proud of isn't a single deal or a quota number — it's the relationships I've built along the way. Clients who started as cold prospects have become long-term partners, and that's no accident. I invest in understanding people deeply, earning trust slowly, and delivering on every promise I make.</p>
+        <p id="about-para3">Beyond the numbers, I'm known for being a genuine listener — someone who takes time to understand a client's real challenges before proposing a solution. I believe great sales is really great storytelling, and I bring that into every pitch, presentation and conversation. I'm also passionate about lifting others up, whether that's mentoring a junior rep or sharing what I've learned along the way.</p>
         <div class="about-highlights">
           <div class="highlight-item">
             <div class="highlight-icon">🎯</div>
@@ -422,6 +422,13 @@
 </footer>
 
 </div>
-
+<script>
+function toggleTheme() {
+  const body = document.body;
+  const isDark = body.getAttribute('data-theme') === 'dark';
+  body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('theme-btn').textContent = isDark ? '☾ Dark' : '☀ Light';
+}
+</script>
 </body>
 </html>
