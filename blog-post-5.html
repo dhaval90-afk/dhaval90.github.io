@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>From SDR to AE — The Mindset Shift Nobody Talks About</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Lato', sans-serif; background: #faf9f7; color: #1a1916; line-height: 1.7; }
+  nav { background: rgba(250,249,247,0.97); border-bottom: 1px solid rgba(26,25,22,0.12); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #b5832a; text-decoration: none; }
+  .back-btn { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4a4843; text-decoration: none; border: 1px solid rgba(26,25,22,0.12); padding: 6px 16px; border-radius: 4px; transition: all 0.2s; }
+  .back-btn:hover { border-color: #b5832a; color: #b5832a; }
+  .hero { background: #1a1916; padding: 5rem 2rem 4rem; text-align: center; }
+  .post-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #d4a44c; border: 1px solid #d4a44c; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; line-height: 1.2; color: #f0ede8; max-width: 700px; margin: 0 auto 1.2rem; }
+  .hero .meta { font-size: 0.82rem; color: #7a7874; letter-spacing: 0.06em; }
+  .hero .meta span { color: #b5832a; margin: 0 0.5rem; }
+  .article { max-width: 680px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+  .divider { width: 48px; height: 3px; background: #b5832a; margin: 0 auto 3rem; }
+  .article p { color: #4a4843; margin-bottom: 1.6rem; font-size: 1.05rem; line-height: 1.85; }
+  .article h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #1a1916; margin: 3rem 0 1rem; }
+  blockquote { border-left: 3px solid #b5832a; margin: 2.5rem 0; padding: 1rem 1.5rem; background: #f2f0ec; border-radius: 0 6px 6px 0; }
+  blockquote p { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #1a1916; font-style: italic; margin: 0; line-height: 1.6; }
+  .callout { background: #1a1916; color: #f0ede8; padding: 2rem; border-radius: 8px; margin: 2.5rem 0; }
+  .callout p { color: #b8b5b0; margin-bottom: 0; font-size: 0.97rem; }
+  .callout strong { color: #d4a44c; display: block; font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .shift-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 2rem 0; }
+  .shift-card { background: #fff; border: 1px solid rgba(26,25,22,0.1); border-radius: 8px; padding: 1.2rem; }
+  .shift-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .shift-card.before .shift-label { color: #7a7874; }
+  .shift-card.after .shift-label { color: #b5832a; }
+  .shift-card p { font-size: 0.88rem; color: #4a4843; margin: 0; line-height: 1.6; }
+  .closing { background: #f2f0ec; border-radius: 8px; padding: 2rem; margin-top: 3rem; text-align: center; }
+  .closing p { color: #4a4843; font-size: 0.95rem; margin-bottom: 1rem; }
+  .closing a { display: inline-block; background: #b5832a; color: #fff; text-decoration: none; padding: 10px 24px; border-radius: 4px; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  footer { text-align: center; padding: 2rem; background: #faf9f7; border-top: 1px solid rgba(26,25,22,0.08); font-size: 0.78rem; color: #7a7874; letter-spacing: 0.08em; }
+  @media (max-width: 600px) { .shift-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Dhaval Mehta</a>
+  <a href="index.html#blog" class="back-btn">← Back to Blog</a>
+</nav>
+<div class="hero">
+  <div class="post-tag">Career</div>
+  <h1>From SDR to AE — The Mindset Shift Nobody Talks About</h1>
+  <div class="meta">July 2025 <span>·</span> 4 min read</div>
+</div>
+<article class="article">
+  <div class="divider"></div>
+
+  <p>When I made the move from SDR to AE, I thought the hard part was behind me. I'd hit my numbers, earned the promotion and was finally going to be closing deals instead of just booking them. What nobody told me was that almost everything I was good at as an SDR was about to become irrelevant — and a whole set of muscles I'd never used before needed to start working immediately.</p>
+
+  <p>The SDR to AE transition is one of the most underestimated shifts in a sales career. It's not a step up the same ladder. It's a completely different ladder.</p>
+
+  <blockquote>
+    <p>As an SDR your job is to open doors. As an AE your job is to know what to do once you're inside — and that requires an entirely different kind of thinking.</p>
+  </blockquote>
+
+  <h2>What Changes — And What Catches You Off Guard</h2>
+
+  <div class="shift-grid">
+    <div class="shift-card before">
+      <div class="shift-label">As an SDR</div>
+      <p>Success is measured in volume — calls made, emails sent, meetings booked. The feedback loop is fast and daily.</p>
+    </div>
+    <div class="shift-card after">
+      <div class="shift-label">As an AE</div>
+      <p>Success is measured in outcomes — deals closed, revenue generated. The feedback loop can take months. You have to learn to operate without constant signals.</p>
+    </div>
+    <div class="shift-card before">
+      <div class="shift-label">As an SDR</div>
+      <p>Your goal is to generate interest and get a meeting. You hand off once curiosity is established.</p>
+    </div>
+    <div class="shift-card after">
+      <div class="shift-label">As an AE</div>
+      <p>You own the entire journey — discovery, demo, proposal, negotiation, close. Every stage requires a different skill and a different version of you.</p>
+    </div>
+    <div class="shift-card before">
+      <div class="shift-label">As an SDR</div>
+      <p>You talk to one person — usually a gatekeeper or an initial contact. The conversation is short and scripted.</p>
+    </div>
+    <div class="shift-card after">
+      <div class="shift-label">As an AE</div>
+      <p>You navigate multiple stakeholders with different priorities, different languages and sometimes competing agendas. Politics becomes part of the job.</p>
+    </div>
+  </div>
+
+  <h2>The Mindset Nobody Prepares You For</h2>
+
+  <p>The biggest shift isn't tactical — it's psychological. As an SDR, activity is comfort. When you're unsure, you make more calls. When a prospect ghosts you, you move to the next one. The volume itself is reassuring.</p>
+
+  <p>As an AE, you can't outwork a stalled deal with more activity. You have to sit with uncertainty, think strategically and sometimes do less — more deliberately. That stillness is deeply uncomfortable for people who were trained to equate movement with progress.</p>
+
+  <p>I remember staring at a deal in my pipeline that had gone quiet for two weeks. My instinct was to send five follow-ups and call every day. What actually moved it was one carefully considered email that reframed the conversation entirely — sent on a Tuesday morning after I'd spent an hour thinking about what was really happening on their side.</p>
+
+  <h2>The Three Things I Wish Someone Had Told Me</h2>
+
+  <p><strong>Discovery is your highest-leverage skill.</strong> As an SDR, discovery is something you hand off to the AE. As an AE, it's the foundation everything else is built on. A mediocre demo after a great discovery will outperform a great demo after a mediocre discovery every single time. Invest in your questions more than your answers.</p>
+
+  <p><strong>Learn to manage a buying committee, not just a buyer.</strong> Enterprise deals rarely have one decision maker. There's the champion who wants it, the economic buyer who signs it, the technical evaluator who approves it and the end users who will live with it. Your job is to understand what each of them needs and give them a reason to say yes in their own language.</p>
+
+  <p><strong>Patience is a competitive advantage.</strong> The AEs who try to rush every deal to close — pushing for decisions before the prospect is ready — leave a trail of blown-up pipelines behind them. The ones who pace themselves to the buyer's journey, who know when to push and when to let things breathe, consistently outperform the rest over a full year.</p>
+
+  <div class="callout">
+    <strong>The question that unlocked my transition</strong>
+    <p>A mentor asked me early in my AE days: "Are you selling or are you helping them buy?" It sounds like the same thing. It isn't. Selling is about what you want. Helping them buy is about what they need. The AEs who get this fastest are the ones who hit their numbers soonest.</p>
+  </div>
+
+  <p>If you're an SDR reading this and thinking about what comes next — start practising the AE mindset now. Ask deeper questions. Think about the full journey, not just the meeting. Get comfortable with ambiguity. By the time you make the transition, you'll already be halfway there.</p>
+
+  <div class="closing">
+    <p>Made this transition yourself? I'd love to hear what surprised you most.</p>
+    <a href="index.html#contact">Get in Touch</a>
+  </div>
+</article>
+<footer>
+  © 2025 Dhaval Mehta · <a href="index.html" style="color:#b5832a;text-decoration:none">Back to Portfolio</a>
+</footer>
+</body>
+</html>
