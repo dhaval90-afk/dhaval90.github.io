@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>What Great Sales Emails Look Like vs Bad Ones</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&family=Fira+Mono&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Lato', sans-serif; background: #faf9f7; color: #1a1916; line-height: 1.7; }
+  nav { background: rgba(250,249,247,0.97); border-bottom: 1px solid rgba(26,25,22,0.12); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #b5832a; text-decoration: none; }
+  .back-btn { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4a4843; text-decoration: none; border: 1px solid rgba(26,25,22,0.12); padding: 6px 16px; border-radius: 4px; transition: all 0.2s; }
+  .back-btn:hover { border-color: #b5832a; color: #b5832a; }
+  .hero { background: #1a1916; padding: 5rem 2rem 4rem; text-align: center; }
+  .post-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #d4a44c; border: 1px solid #d4a44c; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; line-height: 1.2; color: #f0ede8; max-width: 700px; margin: 0 auto 1.2rem; }
+  .hero .meta { font-size: 0.82rem; color: #7a7874; letter-spacing: 0.06em; }
+  .hero .meta span { color: #b5832a; margin: 0 0.5rem; }
+  .article { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+  .divider { width: 48px; height: 3px; background: #b5832a; margin: 0 auto 3rem; }
+  .article p { color: #4a4843; margin-bottom: 1.6rem; font-size: 1.05rem; line-height: 1.85; }
+  .article h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #1a1916; margin: 3rem 0 1rem; }
+  blockquote { border-left: 3px solid #b5832a; margin: 2.5rem 0; padding: 1rem 1.5rem; background: #f2f0ec; border-radius: 0 6px 6px 0; }
+  blockquote p { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #1a1916; font-style: italic; margin: 0; line-height: 1.6; }
+  .callout { background: #1a1916; color: #f0ede8; padding: 2rem; border-radius: 8px; margin: 2.5rem 0; }
+  .callout p { color: #b8b5b0; margin-bottom: 0; font-size: 0.97rem; }
+  .callout strong { color: #d4a44c; display: block; font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .closing { background: #f2f0ec; border-radius: 8px; padding: 2rem; margin-top: 3rem; text-align: center; }
+  .closing p { color: #4a4843; font-size: 0.95rem; margin-bottom: 1rem; }
+  .closing a { display: inline-block; background: #b5832a; color: #fff; text-decoration: none; padding: 10px 24px; border-radius: 4px; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  footer { text-align: center; padding: 2rem; background: #faf9f7; border-top: 1px solid rgba(26,25,22,0.08); font-size: 0.78rem; color: #7a7874; }
+
+  /* EMAIL COMPARISON */
+  .compare-wrap { margin: 2.5rem 0; }
+  .compare-label-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.75rem; }
+  .compare-badge { text-align: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 0; border-radius: 4px; }
+  .compare-badge.bad { background: #fcebeb; color: #a32d2d; }
+  .compare-badge.good { background: #eaf3de; color: #3b6d11; }
+  .email-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .email-mock { border-radius: 8px; overflow: hidden; border: 1px solid; }
+  .email-mock.bad { border-color: #f09595; }
+  .email-mock.good { border-color: #97c459; }
+  .email-header { padding: 0.8rem 1rem; font-size: 0.75rem; }
+  .email-mock.bad .email-header { background: #fcebeb; }
+  .email-mock.good .email-header { background: #eaf3de; }
+  .email-field { color: #7a7874; margin-bottom: 0.2rem; }
+  .email-field strong { color: #1a1916; }
+  .email-body { padding: 1rem; background: #fff; font-size: 0.82rem; color: #4a4843; line-height: 1.7; font-family: 'Lato', sans-serif; }
+  .email-body.bad-text { border-top: 1px solid #f09595; }
+  .email-body.good-text { border-top: 1px solid #97c459; }
+  .highlight-bad { background: #fcebeb; border-radius: 3px; padding: 1px 3px; color: #a32d2d; }
+  .highlight-good { background: #eaf3de; border-radius: 3px; padding: 1px 3px; color: #3b6d11; }
+  .annotation-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem; }
+  .annotation { font-size: 0.8rem; line-height: 1.5; }
+  .annotation.bad { color: #a32d2d; }
+  .annotation.good { color: #3b6d11; }
+  .annotation ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .annotation ul li::before { margin-right: 0.4rem; }
+  .annotation.bad ul li::before { content: '✗'; color: #e24b4a; }
+  .annotation.good ul li::before { content: '✓'; color: #639922; }
+  .section-divider { border: none; border-top: 1px solid rgba(26,25,22,0.08); margin: 1rem 0 2rem; }
+  @media (max-width: 600px) { .email-compare, .compare-label-row, .annotation-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Dhaval Mehta</a>
+  <a href="index.html#blog" class="back-btn">← Back to Blog</a>
+</nav>
+<div class="hero">
+  <div class="post-tag">Sales Skills</div>
+  <h1>What Great Sales Emails Look Like vs Bad Ones</h1>
+  <div class="meta">February 2026 <span>·</span> 5 min read</div>
+</div>
+<article class="article">
+  <div class="divider"></div>
+
+  <p>The average B2B decision maker receives over 100 emails a day. Most are deleted without being opened. A handful get a skim. Very few get a reply. The difference between the ones that land and the ones that don't isn't luck — it's craft.</p>
+  <p>I've written thousands of sales emails across my career. I've also been on the receiving end of them. What follows is a side-by-side breakdown of the patterns that separate emails that get responses from emails that get ignored — using real examples of the types of messages I see every day.</p>
+
+  <h2>Example 1 — The Cold Outreach</h2>
+  <div class="compare-wrap">
+    <div class="compare-label-row">
+      <div class="compare-badge bad">✗ What not to do</div>
+      <div class="compare-badge good">✓ What works</div>
+    </div>
+    <div class="email-compare">
+      <div class="email-mock bad">
+        <div class="email-header">
+          <div class="email-field"><strong>Subject:</strong> <span class="highlight-bad">Synergise Your Sales Pipeline with Our Award-Winning Platform</span></div>
+          <div class="email-field"><strong>To:</strong> prospect@company.com</div>
+        </div>
+        <div class="email-body bad-text">
+          Hi <span class="highlight-bad">[First Name]</span>,<br/><br/>
+          I hope this email finds you well! <span class="highlight-bad">I wanted to reach out</span> because we help companies like yours <span class="highlight-bad">10x their revenue</span> using our AI-powered sales platform.<br/><br/>
+          We've worked with <span class="highlight-bad">hundreds of companies</span> across many industries and our clients see results within 30 days.<br/><br/>
+          <span class="highlight-bad">Would you be open to a 30-minute call this week or next?</span><br/><br/>
+          Best,<br/>Dhaval
+        </div>
+      </div>
+      <div class="email-mock good">
+        <div class="email-header">
+          <div class="email-field"><strong>Subject:</strong> <span class="highlight-good">Your expansion into the US market</span></div>
+          <div class="email-field"><strong>To:</strong> prospect@company.com</div>
+        </div>
+        <div class="email-body good-text">
+          Hi Sarah,<br/><br/>
+          <span class="highlight-good">I saw your announcement last week about expanding into North America</span> — impressive move, especially given how competitive that market is right now.<br/><br/>
+          I work with B2B sales teams navigating exactly that transition. <span class="highlight-good">One thing that consistently trips up India-based teams entering North America is pipeline visibility across time zones</span> — is that something you're currently solving for?<br/><br/>
+          Happy to share what's worked for a few teams in similar positions — <span class="highlight-good">5 minutes on a call or just a reply here</span> works fine.<br/><br/>
+          Dhaval
+        </div>
+      </div>
+    </div>
+    <div class="annotation-row">
+      <div class="annotation bad"><ul>
+        <li>Unfilled placeholder left in</li>
+        <li>Vague, unverifiable claims</li>
+        <li>No research, no personalisation</li>
+        <li>Asks for 30 mins immediately</li>
+        <li>Subject line is pure noise</li>
+      </ul></div>
+      <div class="annotation good"><ul>
+        <li>References a real, specific trigger</li>
+        <li>Names the exact problem they likely have</li>
+        <li>Low-friction ask — reply or 5 mins</li>
+        <li>Subject line creates curiosity</li>
+        <li>Feels like a human wrote it</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <hr class="section-divider"/>
+
+  <h2>Example 2 — The Follow-Up</h2>
+  <div class="compare-wrap">
+    <div class="compare-label-row">
+      <div class="compare-badge bad">✗ What not to do</div>
+      <div class="compare-badge good">✓ What works</div>
+    </div>
+    <div class="email-compare">
+      <div class="email-mock bad">
+        <div class="email-header">
+          <div class="email-field"><strong>Subject:</strong> <span class="highlight-bad">Following up</span></div>
+          <div class="email-field"><strong>To:</strong> prospect@company.com</div>
+        </div>
+        <div class="email-body bad-text">
+          Hi Sarah,<br/><br/>
+          <span class="highlight-bad">Just following up on my previous email.</span> I wanted to check if you had a chance to review it?<br/><br/>
+          <span class="highlight-bad">Please let me know if you're interested</span> and we can schedule a call.<br/><br/>
+          Thanks,<br/>Dhaval
+        </div>
+      </div>
+      <div class="email-mock good">
+        <div class="email-header">
+          <div class="email-field"><strong>Subject:</strong> <span class="highlight-good">Quick thought on your US launch</span></div>
+          <div class="email-field"><strong>To:</strong> prospect@company.com</div>
+        </div>
+        <div class="email-body good-text">
+          Hi Sarah,<br/><br/>
+          <span class="highlight-good">I came across this piece on why Indian SaaS companies struggle with North American outbound</span> — thought it was relevant given what you're building.<br/><br/>
+          [link]<br/><br/>
+          <span class="highlight-good">No pressure on a call — just thought it was worth sharing.</span> If the timing ever works, the door's open.<br/><br/>
+          Dhaval
+        </div>
+      </div>
+    </div>
+    <div class="annotation-row">
+      <div class="annotation bad"><ul>
+        <li>"Just following up" — zero value</li>
+        <li>Puts burden on the prospect</li>
+        <li>Adds nothing new to the conversation</li>
+        <li>Feels desperate, not confident</li>
+      </ul></div>
+      <div class="annotation good"><ul>
+        <li>Brings something genuinely useful</li>
+        <li>Removes pressure explicitly</li>
+        <li>Keeps the door open without chasing</li>
+        <li>Builds credibility through generosity</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <hr class="section-divider"/>
+
+  <h2>Example 3 — The Re-Engagement</h2>
+  <div class="compare-wrap">
+    <div class="compare-label-row">
+      <div class="compare-badge bad">✗ What not to do</div>
+      <div class="compare-badge good">✓ What works</div>
+    </div>
+    <div class="email-compare">
+      <div class="email-mock bad">
+        <div class="email-header">
+          <div class="email-field"><strong>Subject:</strong> <span class="highlight-bad">Are you still interested?</span></div>
+          <div class="email-field"><strong>To:</strong> prospect@company.com</div>
+        </div>
+        <div class="email-body bad-text">
+          Hi Sarah,<br/><br/>
+          <span class="highlight-bad">I haven't heard from you in a while and wanted to check in.</span> Are you still looking for a solution?<br/><br/>
+          <span class="highlight-bad">If priorities have changed, please let me know so I can close out your file.</span><br/><br/>
+          Thanks,<br/>Dhaval
+        </div>
+      </div>
+      <div class="email-mock good">
+        <div class="email-header">
+          <div class="email-field"><strong>Subject:</strong> <span class="highlight-good">Still relevant?</span></div>
+          <div class="email-field"><strong>To:</strong> prospect@company.com</div>
+        </div>
+        <div class="email-body good-text">
+          Hi Sarah,<br/><br/>
+          It's been a little while — I imagine things have been busy on your end.<br/><br/>
+          <span class="highlight-good">If the pipeline visibility challenge we spoke about is still on your radar, I'd love to pick it back up. If priorities have shifted, no worries at all — just say the word and I'll check back in Q3.</span><br/><br/>
+          Either way, good luck with the launch.<br/><br/>
+          Dhaval
+        </div>
+      </div>
+    </div>
+    <div class="annotation-row">
+      <div class="annotation bad"><ul>
+        <li>Passive-aggressive tone</li>
+        <li>"Close out your file" is a manipulation tactic</li>
+        <li>Makes the prospect feel guilty</li>
+        <li>Assumes disinterest, not circumstance</li>
+      </ul></div>
+      <div class="annotation good"><ul>
+        <li>Acknowledges their reality with empathy</li>
+        <li>References the specific problem discussed</li>
+        <li>Gives a genuine out with a future date</li>
+        <li>Ends warmly — relationship preserved</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <h2>The Principles Behind Every Good Sales Email</h2>
+  <p>Looking across all three examples, the same principles show up every time. Good sales emails are specific — they reference something real about the prospect's world. They lead with the prospect's problem, not your product. They ask for something small, not something big. And they feel like they were written by a person who genuinely did their homework, not generated by a template and fired at a list.</p>
+  <p>Bad sales emails do the opposite. They're generic, self-centred, presumptuous about the prospect's interest and ask for too much too soon. They treat the inbox like a broadcast channel rather than a conversation.</p>
+
+  <blockquote>
+    <p>The best sales email you'll ever write is the one that makes the recipient think you wrote it only for them. Because you did.</p>
+  </blockquote>
+
+  <div class="callout">
+    <strong>One test before you hit send</strong>
+    <p>Read your email back and ask: could this have been sent to 500 people with just a name swap? If yes, rewrite it. The moment of personalisation that makes it feel individual is almost always the difference between a reply and a delete.</p>
+  </div>
+
+  <div class="closing">
+    <p>Have an email that's getting no replies? Send it over — I'm happy to give you honest feedback.</p>
+    <a href="index.html#contact">Get in Touch</a>
+  </div>
+</article>
+<footer>© 2024 Dhaval Mehta · <a href="index.html" style="color:#b5832a;text-decoration:none">Back to Portfolio</a></footer>
+</body>
+</html>
