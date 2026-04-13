@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Trust Ladder — How Relationships Progress from Cold to Champion</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Lato', sans-serif; background: #faf9f7; color: #1a1916; line-height: 1.7; }
+  nav { background: rgba(250,249,247,0.97); border-bottom: 1px solid rgba(26,25,22,0.12); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #b5832a; text-decoration: none; }
+  .back-btn { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4a4843; text-decoration: none; border: 1px solid rgba(26,25,22,0.12); padding: 6px 16px; border-radius: 4px; transition: all 0.2s; }
+  .back-btn:hover { border-color: #b5832a; color: #b5832a; }
+  .hero { background: #1a1916; padding: 5rem 2rem 4rem; text-align: center; }
+  .post-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #d4a44c; border: 1px solid #d4a44c; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; line-height: 1.2; color: #f0ede8; max-width: 700px; margin: 0 auto 1.2rem; }
+  .hero .meta { font-size: 0.82rem; color: #7a7874; letter-spacing: 0.06em; }
+  .hero .meta span { color: #b5832a; margin: 0 0.5rem; }
+  .article { max-width: 680px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+  .divider { width: 48px; height: 3px; background: #b5832a; margin: 0 auto 3rem; }
+  .article p { color: #4a4843; margin-bottom: 1.6rem; font-size: 1.05rem; line-height: 1.85; }
+  .article h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #1a1916; margin: 3rem 0 1rem; }
+  blockquote { border-left: 3px solid #b5832a; margin: 2.5rem 0; padding: 1rem 1.5rem; background: #f2f0ec; border-radius: 0 6px 6px 0; }
+  blockquote p { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #1a1916; font-style: italic; margin: 0; line-height: 1.6; }
+  .callout { background: #1a1916; color: #f0ede8; padding: 2rem; border-radius: 8px; margin: 2.5rem 0; }
+  .callout p { color: #b8b5b0; margin-bottom: 0; font-size: 0.97rem; }
+  .callout strong { color: #d4a44c; display: block; font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .closing { background: #f2f0ec; border-radius: 8px; padding: 2rem; margin-top: 3rem; text-align: center; }
+  .closing p { color: #4a4843; font-size: 0.95rem; margin-bottom: 1rem; }
+  .closing a { display: inline-block; background: #b5832a; color: #fff; text-decoration: none; padding: 10px 24px; border-radius: 4px; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  footer { text-align: center; padding: 2rem; background: #faf9f7; border-top: 1px solid rgba(26,25,22,0.08); font-size: 0.78rem; color: #7a7874; }
+
+  /* TRUST LADDER VISUAL */
+  .ladder-wrap { background: #1a1916; border-radius: 12px; padding: 2.5rem 2rem; margin: 2.5rem 0; }
+  .ladder-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 1rem; color: #d4a44c; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 2rem; }
+  .ladder { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .ladder::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(212,164,76,0.2); transform: translateX(-50%); }
+  .rung { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; padding: 0.6rem 0; position: relative; }
+  .rung-left { text-align: right; }
+  .rung-right { text-align: left; }
+  .rung-label { font-size: 0.78rem; color: #b8b5b0; line-height: 1.4; }
+  .rung-label.empty { opacity: 0; }
+  .rung-node { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; position: relative; z-index: 1; }
+  .rung-node.n1 { background: #2c2c2a; border: 2px solid #444441; }
+  .rung-node.n2 { background: #3a3020; border: 2px solid #634808; }
+  .rung-node.n3 { background: #3d2b10; border: 2px solid #8c6320; }
+  .rung-node.n4 { background: #5a3d0a; border: 2px solid #b5832a; }
+  .rung-node.n5 { background: #7a5210; border: 2px solid #d4a44c; }
+  .rung-node.n6 { background: #d4a44c; border: 2px solid #e8c06a; }
+  .rung-stage { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .rung-stage.n1 { color: #5f5e5a; }
+  .rung-stage.n2 { color: #7a6030; }
+  .rung-stage.n3 { color: #8c6320; }
+  .rung-stage.n4 { color: #b5832a; }
+  .rung-stage.n5 { color: #d4a44c; }
+  .rung-stage.n6 { color: #e8c06a; }
+  .arrow-up { text-align: center; color: rgba(212,164,76,0.4); font-size: 1rem; padding: 0.2rem 0; position: relative; z-index: 1; }
+  @media (max-width: 540px) { .ladder::before { left: 24px; transform: none; } .rung { grid-template-columns: auto 1fr; } .rung-left { display: none; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">Dhaval Mehta</a>
+  <a href="index.html#blog" class="back-btn">← Back to Blog</a>
+</nav>
+<div class="hero">
+  <div class="post-tag">Relationships & Strategy</div>
+  <h1>The Trust Ladder — How Relationships Progress from Cold to Champion</h1>
+  <div class="meta">November 2025 <span>·</span> 4 min read</div>
+</div>
+<article class="article">
+  <div class="divider"></div>
+
+  <p>Every deal you've ever closed started with a stranger. Someone who didn't know you, didn't trust you and had no particular reason to give you their time. And somehow, through a series of interactions — some planned, some accidental — that stranger became an advocate who championed your solution internally and maybe even referred you to someone else.</p>
+
+  <p>That journey doesn't happen randomly. It follows a pattern I've come to think of as the Trust Ladder — a progression of relationship stages, each with its own rules, its own risks and its own signal that tells you it's time to move up.</p>
+
+  <div class="ladder-wrap">
+    <div class="ladder-title">The Trust Ladder</div>
+    <div class="ladder">
+
+      <div class="rung">
+        <div class="rung-left"><span class="rung-stage n6">Champion</span><div class="rung-label">Refers you unprompted.<br/>Stakes their reputation on you.</div></div>
+        <div class="rung-node n6">🏆</div>
+        <div class="rung-right"><div class="rung-label">They sell on<br/>your behalf.</div></div>
+      </div>
+      <div class="arrow-up">↑</div>
+
+      <div class="rung">
+        <div class="rung-left"><div class="rung-label">Opens doors,<br/>shares intel.</div></div>
+        <div class="rung-node n5">🤝</div>
+        <div class="rung-right"><span class="rung-stage n5">Ally</span><div class="rung-label">Actively helps<br/>you win internally.</div></div>
+      </div>
+      <div class="arrow-up">↑</div>
+
+      <div class="rung">
+        <div class="rung-left"><span class="rung-stage n4">Believer</span><div class="rung-label">Convinced by your<br/>value. Wants to proceed.</div></div>
+        <div class="rung-node n4">💡</div>
+        <div class="rung-right"><div class="rung-label">Responds quickly,<br/>books meetings.</div></div>
+      </div>
+      <div class="arrow-up">↑</div>
+
+      <div class="rung">
+        <div class="rung-left"><div class="rung-label">Asks real questions.<br/>Shows curiosity.</div></div>
+        <div class="rung-node n3">🔍</div>
+        <div class="rung-right"><span class="rung-stage n3">Curious</span><div class="rung-label">Problem recognised.<br/>Solution being evaluated.</div></div>
+      </div>
+      <div class="arrow-up">↑</div>
+
+      <div class="rung">
+        <div class="rung-left"><span class="rung-stage n2">Aware</span><div class="rung-label">Knows who you are.<br/>Open to listening.</div></div>
+        <div class="rung-node n2">👁</div>
+        <div class="rung-right"><div class="rung-label">Replied once.<br/>Attended a call.</div></div>
+      </div>
+      <div class="arrow-up">↑</div>
+
+      <div class="rung">
+        <div class="rung-left"><div class="rung-label">No reply.<br/>No recognition.</div></div>
+        <div class="rung-node n1">❄️</div>
+        <div class="rung-right"><span class="rung-stage n1">Cold</span><div class="rung-label">Complete stranger.<br/>Zero context.</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <h2>Why Most Salespeople Skip Rungs</h2>
+
+  <p>The most common mistake I see is treating a Curious prospect like a Believer. You get one good discovery call, the prospect asks sharp questions and seems engaged — and suddenly you're sending a full proposal, a pricing deck and a calendar link for a closing call. You've skipped two rungs and the relationship can't hold the weight.</p>
+
+  <p>Every rung requires something specific from you before the prospect is ready to climb. Skipping rungs doesn't accelerate the deal — it destabilises it. The prospect feels rushed, pulls back and you find yourself wondering what went wrong after what seemed like a promising start.</p>
+
+  <h2>What Each Rung Actually Requires</h2>
+
+  <p><strong>Cold → Aware</strong> requires a reason to pay attention. Not a pitch — a pattern interrupt. Something specific enough to make them feel seen rather than targeted. A reference to their recent news, a shared connection, a genuinely relevant insight. The goal is one reply, not a meeting.</p>
+
+  <p><strong>Aware → Curious</strong> requires value before ask. Every touchpoint at this stage should give something — a useful article, a relevant case study, a question that makes them think. You are building a reason to be worth their time before you ask for any of it.</p>
+
+  <p><strong>Curious → Believer</strong> requires a great discovery conversation. One where they feel heard, where you surface the real problem beneath the stated problem and where you demonstrate that you understand their world well enough to have an opinion on it. This is where sales skill matters most.</p>
+
+  <p><strong>Believer → Ally</strong> requires consistency and follow-through. Do what you say you'll do, when you say you'll do it. Share information that helps them navigate their own organisation. Make it easy for them to say yes internally by giving them the language and the evidence they need to convince others.</p>
+
+  <p><strong>Ally → Champion</strong> requires that you make them look good. When your solution delivers — when the outcomes are real and visible — a great ally becomes a champion almost automatically. Your job at this stage is to make sure the value is visible and attributed to their decision to bring you in.</p>
+
+  <blockquote>
+    <p>You don't close a champion. You earn one — slowly, consistently and by caring about their success more than your commission.</p>
+  </blockquote>
+
+  <div class="callout">
+    <strong>The question to ask at every stage</strong>
+    <p>Before your next touchpoint with any prospect, ask yourself: which rung are they on right now — and what does this specific interaction need to do to help them feel ready to climb to the next one? That single question will change the quality of every conversation you have.</p>
+  </div>
+
+  <p>The Trust Ladder isn't a shortcut. It's a map. And like any map, it's most useful when you know exactly where you are before you decide where to go next.</p>
+
+  <div class="closing">
+    <p>Where do most of your prospects stall on the ladder? I'd love to hear your experience.</p>
+    <a href="index.html#contact">Get in Touch</a>
+  </div>
+</article>
+<footer>© 2025 Dhaval Mehta · <a href="index.html" style="color:#b5832a;text-decoration:none">Back to Portfolio</a></footer>
+</body>
+</html>
